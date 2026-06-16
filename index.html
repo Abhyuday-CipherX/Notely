@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notely-Make your own notes.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-overlay" class="modal-overlay">
+        <div class="auth-modal">
+            <h2>Welcome to Notely 📖</h2>
+            <p>Enter a workspace name to start saving your notes securely on this device.</p>
+            <input type="text" id="username-input" placeholder="e.g., Alex's Workspace">
+            <button id="login-btn" class="btn btn-primary">Enter Dashboard</button>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="logo-icon">📖</span>
+                <h2>Notely</h2>
+            </div>
+            <div class="user-profile">
+                <p>Workspace: <span id="display-user">Guest</span></p>
+                <button id="logout-btn" class="logout-link">Switch Workspace</button>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" onclick="switchTab('all-notes')">📚 All Notes</button>
+                <button class="nav-item" onclick="switchTab('text-notes')">✍️ Text Notes</button>
+                <button class="nav-item" onclick="switchTab('voice-notes')">🎙️ Voice Notes</button>
+                <button class="nav-item" onclick="switchTab('todo-list-tab')">✅ Multi-Tasks</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="notes-workspace" class="workspace-tab active">
+                <header class="tab-header">
+                    <h1 id="workspace-title">All Notes</h1>
+                    <p id="workspace-desc">Viewing all combined text documents and audio memos.</p>
+                </header>
+                <div class="workspace-grid">
+                    <div class="panel creator-panel">
+                        <h3>Create Content</h3>
+                        <div class="textarea-wrapper">
+                            <textarea id="note-text" placeholder="Type a note here..."></textarea>
+                        </div>
+                        <div class="action-bar">
+                            <button id="mic-btn" class="btn btn-secondary">🎤 Record Audio</button>
+                            <button id="save-note-btn" class="btn btn-primary">Save Text Note</button>
+                        </div>
+                    </div>
+                    <div class="panel display-panel">
+                        <h3>Your Workspace Archive</h3>
+                        <div id="notes-list" class="notes-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="todo-workspace-view" class="workspace-tab" style="display: none;">
+                <header class="tab-header">
+                    <h1>Multi-Task Manager</h1>
+                    <p>Create separate lists (e.g., "Work", "Groceries") and organize your day.</p>
+                </header>
+                
+                <div class="todo-controls">
+                    <input type="text" id="new-list-title" placeholder="Create a new list category...">
+                    <button id="create-list-btn" class="btn btn-primary">+ Create List</button>
+                </div>
+
+                <div id="boards-container" class="boards-layout"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
