@@ -86,3 +86,117 @@ audio { width: 100%; margin-top: auto; }
 .auth-modal input { width: 100%; padding: 14px; background: var(--bg-app); border: 1px solid var(--border-color); border-radius: 8px; color: white; margin-bottom: 16px; text-align: center; outline: none; }
 
 @keyframes blink { 50% { opacity: 0.5; } }
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE ENGINE (PATCH)
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* 1. Stack the dashboard layout vertically instead of horizontally */
+    .dashboard-wrapper {
+        flex-direction: column;
+        overflow-y: auto; /* Allow the entire page to scroll naturally on mobile */
+        height: 100vh;
+    }
+
+    /* 2. Re-architect the sidebar into a compact mobile top header */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        gap: 12px;
+    }
+
+    /* Keep branding and workspace switcher inline to save screen real estate */
+    .brand {
+        margin-bottom: 0;
+        justify-content: center;
+    }
+    
+    .user-profile {
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    /* Make tab options sit comfortably side-by-side in a scrollable horizontal row */
+    .nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 6px;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+    }
+
+    .nav-item {
+        padding: 8px 14px;
+        font-size: 13px;
+        border-left: none !important; /* Remove desktop vertical border line */
+        border-bottom: 2px solid transparent;
+    }
+
+    .nav-item.active {
+        background: var(--border-color);
+        border-bottom: 2px solid var(--primary);
+        border-radius: 6px;
+    }
+
+    /* 3. Give the main contents full 100% viewport width boundaries */
+    .main-content {
+        padding: 20px 16px;
+        overflow-y: visible; /* Prevent double-scrollbars since parent handles scrolling */
+    }
+
+    .tab-header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .tab-header h1 {
+        font-size: 24px;
+    }
+
+    /* 4. Force the side-by-side grids to collapse cleanly into a single vertical row */
+    .workspace-grid {
+        grid-template-columns: 1fr; /* Takes up complete mobile width */
+        gap: 20px;
+    }
+
+    /* Fix the creator input panel sizing limits */
+    .creator-panel {
+        width: 100%;
+    }
+
+    textarea {
+        height: 140px; /* Marginally shorter textarea to accommodate mobile virtual keyboards */
+    }
+
+    /* Adjust the grid cells so they scale up elegantly on smaller touch screens */
+    .notes-grid {
+        grid-template-columns: 1fr; /* Single column feed for clean scannability */
+        gap: 12px;
+    }
+
+    .note-card {
+        min-height: auto; /* Let card adapt strictly to dynamic voice/text layout constraints */
+    }
+
+    /* 5. Clean up Multi-Task horizontal column boards on small device viewports */
+    .todo-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .boards-layout {
+        flex-direction: column; /* Stack boards vertically instead of pushing right out of view */
+        align-items: center;
+        gap: 16px;
+    }
+
+    .board-column {
+        width: 100% !important;
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
