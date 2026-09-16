@@ -33,7 +33,7 @@ What truly sets Notely apart is its **zero-database, privacy-first infrastructur
 
 To run this project locally on your machine with active serverless backend capabilities, ensure you have the Netlify CLI installed:
 
-1. Clone this repository to your local machine.
+1. Clone this repository to your local machine using git clone function.
 2. Install the necessary development dependencies:
 ```bash
    npm install
